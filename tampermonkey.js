@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    http://tampermonkey.net/
-// @version      0.91
+// @version      0.98
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -30,6 +30,7 @@ function nameAdd() {
     var blueThrottle = 0;
     var blueOpen = 0;
     var allHEs = '';
+    var opLang = '';
 
     if(($('.chat__chat-queue .capacity__operators').length) && (!$('.chat__chat-queue .operators_stats').length)) {
         $('.chat__chat-queue .capacity__operators').after('<div class="operators_stats stats_open"><h4>Operator stats <div class="stats_toggle"></div></h4><div class="operators_all_stats" style="display: block;"><div class="stats-block"><strong>Total ops</strong>: <span class="all-ops">0</span> ( <strong class="green ops-green">0</strong>  <strong class="yellow ops-yellow">0</strong>  <strong class="blue ops-blue">0</strong>  <strong class="red ops-red">0</strong> )</div><div class="stats-block"><strong>GREEN OPS:</strong><br><span class="throttle-one throttle-count">0</span> have a throttle of 1<br><span class="throttle-two throttle-count">0</span> have a throttle of 2<br><span class="throttle-three throttle-count">0</span> have a throttle of 3<br><span class="throttle-four throttle-count">0</span> have a throttle of 4<br><span class="throttle-more throttle-count">0</span> have a throttle of more than 4<br></div><div class="stats-block"><strong>All green ops load</strong>: <span class="green-ops-load">0</span><br><strong>All green ops throttle</strong>: <span class="green-ops-throttle">0</span><br><strong>Green ops open</strong>: <span class="green-ops-open">0</span> <strong class="moar-chat red"></strong></div></div></div>');
@@ -39,6 +40,13 @@ function nameAdd() {
 
         var opInfo = $(this).find('img').attr('title');
         // var opName = opInfo.substring(0, opInfo.indexOf(' ') + 1);
+        if(opInfo.includes('pt-br')) {
+            opLang = "pt-br";
+        } else if(opInfo.includes(': es') || opInfo.includes(', es')){
+            opLang = "es";
+        } else {
+            opLang = "";
+        }
         var opName = opInfo.substring(opInfo.lastIndexOf("(")+1,opInfo.lastIndexOf(")"));
         var opLoadPos = opInfo.indexOf('Load: ');
         var opLoad = opInfo.substr(opLoadPos+6, 1);
@@ -58,7 +66,7 @@ function nameAdd() {
         if (!$(this).hasClass('hasName')) {
             $(this).addClass('hasName');
             $(this).find('.operator_name').remove();
-            $(this).find('img').after('<div class="operator_info"><span class="operator_name"></span><div class="operator_load"></div><div class="operator_capacity"><div class="operator_ind"></div></div></div>');
+            $(this).find('img').after('<div class="operator_info"><span class="operator_name '+opLang+'"></span><div class="operator_load"></div><div class="operator_capacity"><div class="operator_ind"></div></div></div>');
         }
 
         $(this).find('.operator_name').html(opName);
