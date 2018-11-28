@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    http://tampermonkey.net/
-// @version      0.98
+// @version      1.01
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -66,7 +66,7 @@ function nameAdd() {
         if (!$(this).hasClass('hasName')) {
             $(this).addClass('hasName');
             $(this).find('.operator_name').remove();
-            $(this).find('img').after('<div class="operator_info"><span class="operator_name '+opLang+'"></span><div class="operator_load"></div><div class="operator_capacity"><div class="operator_ind"></div></div></div>');
+            $(this).find('img').after('<div class="operator_info" title="'+opLang+'"><span class="operator_name '+opLang+'"></span><div class="operator_load"></div><div class="operator_capacity"><div class="operator_ind"></div></div></div>');
         }
 
         $(this).find('.operator_name').html(opName);
@@ -144,7 +144,7 @@ function nameAdd() {
     }
 
     if ($('#copyOperatorData').length < 1) {
-        $('.capacity__operators').after('<a href="#" class="button" id="copyOperatorData">Copy Operator Info to Clipboard</a><div id="operatorData"></div>');
+        $('.capacity__operators').after('<a href="#" class="button" id="hideRedHEs">Hide red HE\'s</a> <a href="#" class="button" id="showRedHEs" style="display: none;">Show red HEs</a> <a href="#" class="button" id="copyOperatorData">Copy Operator Info</a><div id="operatorData"></div>');
     }
 
     allHEs = allHEs + "TOTAL GREEN: " + greenLoad + "/" + greenThrottle + "\n";
@@ -165,6 +165,17 @@ $("body").on('click','#copyOperatorData', function () {
     copyDataToClipboard(document.getElementById("operatorData"));
 });
 
+$("body").on('click','#hideRedHEs', function () {
+    $('.operators__unavailable').hide();
+    $(this).hide();
+    $('#showRedHEs').show();
+});
+
+$("body").on('click','#showRedHEs', function () {
+    $('.operators__unavailable').show();
+    $(this).hide();
+    $('#hideRedHEs').show();
+});
 
 
 function copyDataToClipboard(elem) {
