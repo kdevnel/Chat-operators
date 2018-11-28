@@ -33,7 +33,7 @@
         resize: vertical;
     }
 
-    #copyOperatorData {
+    .chat__chat-queue .capacity .button {
         margin:0 10px 10px 10px;
     }
 
