@@ -136,7 +136,7 @@ function nameAdd() {
     }
 
     if ($('#copyOperatorData').length < 1) {
-        $('.capacity__operators').after('<a href="#" class="button" id="copyOperatorData">Copy HE Info to Clipboard</a><div id="operatorData"></div>');
+        $('.capacity__operators').after('<a href="#" class="button" id="copyOperatorData">Copy Operator Info to Clipboard</a><div id="operatorData"></div>');
     }
 
     allHEs = allHEs + "TOTAL GREEN: " + greenLoad + "/" + greenThrottle + "\n";
