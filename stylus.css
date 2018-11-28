@@ -66,7 +66,7 @@
 /* --- Operator icon/name/load/etc. --- */    
     .chat__chat-queue .operators img {
         float: left;
-        margin-right: 10px;
+        margin-right: 5px;
         width: 22px;
         height: 22px;
         border: solid 3px transparent;
@@ -87,7 +87,25 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
- 
+
+    .chat__chat-queue .operator_name.es, 
+    .chat__chat-queue .operator_name.pt-br {
+        background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Portugal_-_Circle-512.png');
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: auto 19px;
+        padding-left: 23px;
+        margin-left: -3px;
+     }
+
+    .chat__chat-queue .operator_name.pt-br {
+        background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Portugal_-_Circle-512.png');
+     }
+
+    .chat__chat-queue .operator_name.es {
+        background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Spain_-_Circle-512.png');
+     }
+
     .chat__chat-queue .operator_load {
         float: right;
         width: 20px;
