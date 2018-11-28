@@ -90,7 +90,6 @@
 
     .chat__chat-queue .operator_name.es, 
     .chat__chat-queue .operator_name.pt-br {
-        background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Portugal_-_Circle-512.png');
         background-repeat: no-repeat;
         background-position: left center;
         background-size: auto 19px;
