@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Happychat Operators
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/senff/Chat-operators
 // @version      1.1
 // @description  List of operators
 // @author       Senff
