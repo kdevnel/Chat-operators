@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    http://tampermonkey.net/
-// @version      1.01
+// @version      1.1
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -29,6 +29,10 @@ function nameAdd() {
     var blueLoad = 0;
     var blueThrottle = 0;
     var blueOpen = 0;
+    var HEsGreen = 'GREEN: ';
+    var HEsBlue = 'BLUE: ';
+    var HEsYellow = 'YELLOW: ';
+    var HEsRed = 'RED: ';
     var allHEs = '';
     var opLang = '';
 
@@ -91,12 +95,12 @@ function nameAdd() {
                 var thisOpen = parseInt(opThrottle) - parseInt(opLoad);
                 greenOpen = parseInt(greenOpen) + parseInt(thisOpen);
             }
-            allHEs = allHEs + "GREEN: " + opName + " - " + opLoad + "/" + opThrottle + "\n";
+            HEsGreen = HEsGreen + opName + " (" + opLoad + "/" + opThrottle + "), ";
         }
 
         if ($(this).hasClass('operators__busy')) {
             opsYellow++;
-            allHEs = allHEs + "YELLOW: " + opName + " - " + opLoad + "/" + opThrottle + "\n";
+            HEsYellow = HEsYellow + opName + " (" + opLoad + "/" + opThrottle + "), ";
         }
         if ($(this).hasClass('operators__reserve')) {
             opsBlue++;
@@ -106,11 +110,12 @@ function nameAdd() {
                 thisOpen = parseInt(opThrottle) - parseInt(opLoad);
                 blueOpen = parseInt(blueOpen) + parseInt(thisOpen);
             }
-            allHEs = allHEs + "BLUE: " + opName + " - " + opLoad + "/" + opThrottle + "\n";
+            HEsBlue = HEsBlue + opName + " (" + opLoad + "/" + opThrottle + "), ";
         }
         if ($(this).hasClass('operators__unavailable')) {
             opsRed++;
-            allHEs = allHEs + "RED: " + opName + " - " + opLoad + "/" + opThrottle + "\n";
+            HEsRed = HEsRed + opName + " (" + opLoad + "/" + opThrottle + "), ";
+
         }
 
         opsAll++;
@@ -147,6 +152,12 @@ function nameAdd() {
         $('.capacity__operators').after('<a href="#" class="button" id="hideRedHEs">Hide red HE\'s</a> <a href="#" class="button" id="showRedHEs" style="display: none;">Show red HEs</a> <a href="#" class="button" id="copyOperatorData">Copy Operator Info</a><div id="operatorData"></div>');
     }
 
+    HEsGreen = HEsGreen.slice(0, -2);
+    HEsBlue = HEsBlue.slice(0, -2);
+    HEsYellow = HEsYellow.slice(0, -2);
+    HEsRed = HEsRed.slice(0, -2);
+
+    allHEs = HEsGreen + '\n' + HEsBlue + '\n' + HEsYellow + '\n' + HEsRed + '\n\n';
     allHEs = allHEs + "TOTAL GREEN: " + greenLoad + "/" + greenThrottle + "\n";
     allHEs = allHEs + "TOTAL BLUE: " + blueLoad + "/" + blueThrottle + "\n";
     $('#operatorData').html(allHEs);
