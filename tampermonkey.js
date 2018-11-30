@@ -6,6 +6,7 @@
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
 // @match        https://hud.happychat.io/*
+// @updateURL    https://raw.githubusercontent.com/senff/Chat-operators/master/tampermonkey.js
 // @grant        none
 // ==/UserScript==
 
