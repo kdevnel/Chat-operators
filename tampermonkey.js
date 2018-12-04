@@ -139,18 +139,18 @@ function nameAdd() {
     $('.green-ops-throttle').html(greenThrottle);
     $('.green-ops-open').html(greenOpen);
 
-    if (greenOpen < 1) {
+    if ((greenLoad >= greenThrottle) && (blueLoad >= blueThrottle)) {
+        $('.moar-chat').html('<br>*** MORECHAT ***');
+    } else if (greenOpen < 1) {
         $('.moar-chat').html('<br>* GREEN HEs ARE FULL *');
     } else if (greenOpen < 3) {
         $('.moar-chat').html('<br>Green HEs are almost full');
-    } else if ((greenLoad >= greenThrottle) && (blueLoad >= blueThrottle)) {
-        $('.moar-chat').html('<br>*** MORECHAT ***');
     } else {
         $('.moar-chat').html('');
     }
 
     if ($('#copyOperatorData').length < 1) {
-        $('.capacity__operators').after('<a href="#" class="button" id="hideRedHEs">Hide red HE\'s</a> <a href="#" class="button" id="showRedHEs" style="display: none;">Show red HEs</a> <a href="#" class="button" id="copyOperatorData">Copy Operator Info</a><div id="operatorData"></div>');
+        $('.chat__chat-queue .capacity__operators').after('<a href="#" class="button" id="hideRedHEs">Hide red HE\'s</a> <a href="#" class="button" id="showRedHEs" style="display: none;">Show red HEs</a> <a href="#" class="button" id="copyOperatorData">Copy Operator Info</a><div id="operatorData"></div>');
     }
 
     HEsGreen = HEsGreen.slice(0, -2);
