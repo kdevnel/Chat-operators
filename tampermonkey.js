@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    https://github.com/senff/Chat-operators
-// @version      1.1
+// @version      1.2
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -38,7 +38,7 @@ function nameAdd() {
     var opLang = '';
 
     if(($('.chat__chat-queue .capacity__operators').length) && (!$('.chat__chat-queue .operators_stats').length)) {
-        $('.chat__chat-queue .capacity__operators').after('<div class="operators_stats stats_open"><h4>Operator stats <div class="stats_toggle"></div></h4><div class="operators_all_stats" style="display: block;"><div class="stats-block"><strong>Total ops</strong>: <span class="all-ops">0</span> ( <strong class="green ops-green">0</strong>  <strong class="yellow ops-yellow">0</strong>  <strong class="blue ops-blue">0</strong>  <strong class="red ops-red">0</strong> )</div><div class="stats-block"><strong>GREEN OPS:</strong><br><span class="throttle-one throttle-count">0</span> have a throttle of 1<br><span class="throttle-two throttle-count">0</span> have a throttle of 2<br><span class="throttle-three throttle-count">0</span> have a throttle of 3<br><span class="throttle-four throttle-count">0</span> have a throttle of 4<br><span class="throttle-more throttle-count">0</span> have a throttle of more than 4<br></div><div class="stats-block"><strong>All green ops load</strong>: <span class="green-ops-load">0</span><br><strong>All green ops throttle</strong>: <span class="green-ops-throttle">0</span><br><strong>Green ops open</strong>: <span class="green-ops-open">0</span> <strong class="moar-chat red"></strong></div></div></div>');
+        $('.chat__chat-queue .capacity__operators').after('<div class="operators_stats stats_open"><h4>Operator stats <div class="stats_toggle"></div></h4><div class="operators_all_stats" style="display: block;"><div class="stats-block"><strong>Total HEs</strong>: <span class="all-ops">0</span> ( <strong class="green ops-green">0</strong>  <strong class="yellow ops-yellow">0</strong>  <strong class="blue ops-blue">0</strong>  <strong class="red ops-red">0</strong> )</div><div class="stats-block"><strong>GREEN HEs:</strong><br><span class="throttle-one throttle-count">0</span> have a throttle of 1<br><span class="throttle-two throttle-count">0</span> have a throttle of 2 <span class="alert-throttle" title="More HEs with throttle 2 than throttle 3">!</span><br><span class="throttle-three throttle-count">0</span> have a throttle of 3<br><span class="throttle-four throttle-count">0</span> have a throttle of 4<br><span class="throttle-more throttle-count">0</span> have a throttle of more than 4<br></div><div class="stats-block"><strong>All green HEs load</strong>: <span class="green-ops-load">0</span><br><strong>All green HEs throttle</strong>: <span class="green-ops-throttle">0</span><br><strong>Green HEs open</strong>: <span class="green-ops-open">0</span> <strong class="moar-chat red"></strong></div></div></div>');
     }
 
     $('.chat__chat-queue .operators').each(function( index ) {
@@ -116,7 +116,6 @@ function nameAdd() {
         if ($(this).hasClass('operators__unavailable')) {
             opsRed++;
             HEsRed = HEsRed + opName + " (" + opLoad + "/" + opThrottle + "), ";
-
         }
 
         opsAll++;
@@ -149,6 +148,12 @@ function nameAdd() {
         $('.moar-chat').html('');
     }
 
+    if (throttleTwo > throttleThree) {
+        $('.alert-throttle').addClass('.alert-on');
+    } else {
+        $('.alert-throttle').removeClass('.alert-on');
+    }
+
     if ($('#copyOperatorData').length < 1) {
         $('.chat__chat-queue .capacity__operators').after('<a href="#" class="button" id="hideRedHEs">Hide red HE\'s</a> <a href="#" class="button" id="showRedHEs" style="display: none;">Show red HEs</a> <a href="#" class="button" id="copyOperatorData">Copy Operator Info</a><div id="operatorData"></div>');
     }
@@ -178,13 +183,13 @@ $("body").on('click','#copyOperatorData', function () {
 });
 
 $("body").on('click','#hideRedHEs', function () {
-    $('.operators__unavailable').hide();
+    $('body').append('<style type="text/css" class="hideredhes">.chat__chat-queue .operators.operators__unavailable {display: none;}</style>');
     $(this).hide();
     $('#showRedHEs').show();
 });
 
 $("body").on('click','#showRedHEs', function () {
-    $('.operators__unavailable').show();
+    $('.hideredhes').remove();
     $(this).hide();
     $('#hideRedHEs').show();
 });
