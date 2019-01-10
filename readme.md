@@ -28,10 +28,10 @@ Tampermonkey does the same, but for Javascript, to modify functionality.
 3. paste the contents of stylus.css into the code field
 4. ensure that "Applies to" is set to "URLS on the domain" / hud.happychat.io
 5. SAVE
+6. install Tampermonkey
+7. create a new script, with name "HappyChat Operators"
+8. paste the contents of tampermonkey.js into the code field
+9. SAVE
 
-1. install Tampermonkey
-2. create a new script, with name "HappyChat Operators"
-3. paste the contents of tampermonkey.js into the code field
-4. SAVE
-
-More information: https://heinvestigations.wordpress.com/2018/01/17/happychat-operators-redesign/
+## MORE INFORMATION:
+https://heinvestigations.wordpress.com/2018/01/17/happychat-operators-redesign/
