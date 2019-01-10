@@ -62,7 +62,6 @@
         display: block;
     }
  
- 
 /* --- Operator icon/name/load/etc. --- */    
     .chat__chat-queue .operators img {
         float: left;
@@ -72,7 +71,7 @@
         border: solid 3px transparent;
     }
  
-    /* --- Avatar status colors --- */    
+        /* --- Avatar status colors --- */    
         .chat__chat-queue .operators__available img {border-color:#4ab866;}
         .chat__chat-queue .operators__reserve img {border-color:#0087be;}
         .chat__chat-queue .operators__busy img {border-color:#f0b849;}
@@ -126,7 +125,7 @@
         border-radius: 5px;
     }
  
-    /* --- Load/throttle colors --- */
+/* --- Load/throttle colors --- */
     .capLevel0 .operator_ind {background: #4ab866;}
     .capLevel1 .operator_ind {background: #4ab866;}
     .capLevel2 .operator_ind {background: #4ab866;}
@@ -141,140 +140,95 @@
     .capLevelOver .operator_ind {background: #660000;}
  
 /* --- Additional stats --- */
- 
-.operators_stats {
-    margin: 10px;
-    font-size: 12px;
-    border: solid 1px #c0c0c0;
-    background: #ffffff;
-}
- 
-.operators_stats h4 {
-    padding: 0 0 0 10px;
-    margin: 0;
-    background: #e0e0e0;
-    height: 26px;
-    line-height: 26px;
-    cursor: pointer;
-}
- 
-.operators_all_stats {
-    display:none;
-}
- 
-.operators_stats.stats_open .operators_all_stats {
-    border-top: solid 1px #c0c0c0;
-}
- 
-.operators_stats h4 .stats_toggle {
-    float: right;
-    width: 0px;
-    height: 0px;
-    border-top: solid 10px #333333;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    margin: 7px 10px 0 0;
-}
- 
-.operators_stats.stats_open h4 .stats_toggle {
-    border-top: solid 0 #333333;
-    border-bottom: solid 10px #333333;
-    margin: 7px 10px 0 0;
-}
- 
-.stats-block {
-    margin: 5px 0;
-    padding: 0 10px;
-}
- 
-.throttle-count {
-    margin-left: 15px;
-}
+    .operators_stats {
+        margin: 10px;
+        font-size: 12px;
+        border: solid 1px #c0c0c0;
+        background: #ffffff;
+    }
 
+    .operators_stats h4 {
+        padding: 0 0 0 10px;
+        margin: 0;
+        background: #e0e0e0;
+        height: 26px;
+        line-height: 26px;
+        cursor: pointer;
+    }
 
-.chat-panel__unread-messages-notice {
-    display: none;
-}
+    .operators_all_stats {
+        display:none;
+    }
 
-.chat__current-chat__actions,
-.chat-actions__current-chat-action-compose {
-    height: 115px;
-}
+    .operators_stats.stats_open .operators_all_stats {
+        border-top: solid 1px #c0c0c0;
+    }
 
-.chat__current-chat__actions textarea {
-    height: 110px;
-}
+    .operators_stats h4 .stats_toggle {
+        float: right;
+        width: 0px;
+        height: 0px;
+        border-top: solid 10px #333333;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        margin: 7px 10px 0 0;
+    }
 
-/* --- Use full text in user buttons --- */
-.user-data-panel__admin-buttons {
-  border: solid 1px #89a8bd;
-  background: white;
-  padding: 5px 5px 0 5px;
-  margin: 0 0 10px 0;
-  text-align: center;
-}
+    .operators_stats.stats_open h4 .stats_toggle {
+        border-top: solid 0 #333333;
+        border-bottom: solid 10px #333333;
+        margin: 7px 10px 0 0;
+    }
 
-.user-data-panel__admin-buttons a {
-  font-size: 0;
-  margin: 0 10px 7px 0;
-  background: #f6f6f6;
-}
+    .stats-block {
+        margin: 5px 0;
+        padding: 0 10px;
+    }
 
-.user-data-panel__admin-buttons a::before {
-  font-size: 13px;
-}
+    .throttle-count {
+        margin-left: 15px;
+    }
 
-.user-data-panel__admin-buttons a:nth-child(1)::before{
-  content:"Report Card";
-}
+    .alert-throttle {
+        display: none;
+    }
 
-.user-data-panel__admin-buttons a:nth-child(2)::before{
-  content:"Store Admin";
-}
+    .alert-on {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        left: 5px;
+        background: #ffcc22;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 16px;
+        font-size: 12px;
+        font-family: "times new roman";
+        cursor: default;
+    }
 
-.user-data-panel__admin-buttons a:nth-child(3)::before{
-  content:"Network Admin";
-}
+    .chat-panel__unread-messages-notice {
+        display: none;
+    }
 
-.user-data-panel__admin-buttons a:nth-child(4)::before{
-  content:"Payments";
-}
+    .chat__current-chat__actions,
+    .chat-actions__current-chat-action-compose {
+        height: 115px;
+    }
 
+    .chat__current-chat__actions textarea {
+        height: 110px;
+    }
 
-.chat-panel__return-to-now {
-    display: none;
-}
+    .chat-panel__return-to-now {
+        display: none;
+    }
 
-.chat__current-chat__actions textarea {
-    padding:5px 10px;
-}
+    .chat__current-chat__actions textarea {
+        padding:5px 10px;
+    }
 
-.chat__current-chat__actions button {
-    display: none;
-}
-
-
-.user-blog-panel__button {
-  font-size: 0;
-  margin: 0 10px 3px 0;
-}
-
-.user-blog-panel__button::before {
-  font-size: 14px;
-}
-
-.user-blog-panel__button:nth-of-type(1)::before{
-  content:"Network Admin";
-}
-
-.user-blog-panel__button:nth-of-type(2)::before{
-  content:"Report Card";
-}
-
-.user-blog-panel__button:nth-of-type(3)::before{
-  content:"WP-admin";
-}
-
-.user-blog-panel__button:nth-of-type(4)::before{
-  content:"Customizer";
-}
+    .chat__current-chat__actions button {
+        display: none;
+    }
