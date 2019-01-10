@@ -9,12 +9,13 @@
 
 ## REQUIREMENTS:
 
-- Stylus 
-	CHROME: https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en
-	FIREFOX: https://addons.mozilla.org/en-GB/firefox/addon/styl-us/
-- Tampermonkey
-	CHROME: https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en
-	FIREFOX: https://addons.mozilla.org/en-GB/firefox/addon/tampermonkey/?src=search
+### Stylus 
+- CHROME: https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en
+- FIREFOX: https://addons.mozilla.org/en-GB/firefox/addon/styl-us/
+
+### Tampermonkey
+- CHROME: https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en
+- FIREFOX: https://addons.mozilla.org/en-GB/firefox/addon/tampermonkey/?src=search
 
 With Stylus, you can add your own custom CSS code to any site, to modify the look/feel.
 Tampermonkey does the same, but for Javascript, to modify functionality.
@@ -27,11 +28,10 @@ Tampermonkey does the same, but for Javascript, to modify functionality.
 3. paste the contents of stylus.css into the code field
 4. ensure that "Applies to" is set to "URLS on the domain" / hud.happychat.io
 5. SAVE
-6. screenshot:
 
 1. install Tampermonkey
 2. create a new script, with name "HappyChat Operators"
-3. paste the contents of tampermonkey.js into the code field and SAVE
-
+3. paste the contents of tampermonkey.js into the code field
+4. SAVE
 
 More information: https://heinvestigations.wordpress.com/2018/01/17/happychat-operators-redesign/
