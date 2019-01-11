@@ -149,9 +149,9 @@ function nameAdd() {
     }
 
     if (throttleTwo > throttleThree) {
-        $('.alert-throttle').addClass('.alert-on');
+        $('.alert-throttle').addClass('alert-on');
     } else {
-        $('.alert-throttle').removeClass('.alert-on');
+        $('.alert-throttle').removeClass('alert-on');
     }
 
     if ($('#copyOperatorData').length < 1) {
