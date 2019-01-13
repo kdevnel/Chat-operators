@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    https://github.com/senff/Chat-operators
-// @version      1.2
+// @version      1.3
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -36,6 +36,7 @@ function nameAdd() {
     var HEsRed = 'RED: ';
     var allHEs = '';
     var opLang = '';
+    var opSkill = '';
 
     if(($('.chat__chat-queue .capacity__operators').length) && (!$('.chat__chat-queue .operators_stats').length)) {
         $('.chat__chat-queue .capacity__operators').after('<div class="operators_stats stats_open"><h4>Operator stats <div class="stats_toggle"></div></h4><div class="operators_all_stats" style="display: block;"><div class="stats-block"><strong>Total HEs</strong>: <span class="all-ops">0</span> ( <strong class="green ops-green">0</strong>  <strong class="yellow ops-yellow">0</strong>  <strong class="blue ops-blue">0</strong>  <strong class="red ops-red">0</strong> )</div><div class="stats-block"><strong>GREEN HEs:</strong><br><span class="throttle-one throttle-count">0</span> have a throttle of 1<br><span class="throttle-two throttle-count">0</span> have a throttle of 2 <span class="alert-throttle" title="More HEs with throttle 2 than throttle 3">!</span><br><span class="throttle-three throttle-count">0</span> have a throttle of 3<br><span class="throttle-four throttle-count">0</span> have a throttle of 4<br><span class="throttle-more throttle-count">0</span> have a throttle of more than 4<br></div><div class="stats-block"><strong>All green HEs load</strong>: <span class="green-ops-load">0</span><br><strong>All green HEs throttle</strong>: <span class="green-ops-throttle">0</span><br><strong>Green HEs open</strong>: <span class="green-ops-open">0</span> <strong class="moar-chat red"></strong></div></div></div>');
@@ -52,6 +53,13 @@ function nameAdd() {
         } else {
             opLang = "";
         }
+
+        if(opInfo.includes('atomic')) {
+            opSkill = "atomic";
+        } else {
+            opSkill = "";
+        }
+
         var opName = opInfo.substring(opInfo.lastIndexOf("(")+1,opInfo.lastIndexOf(")"));
         var opLoadPos = opInfo.indexOf('Load: ');
         var opLoad = opInfo.substr(opLoadPos+6, 1);
@@ -71,10 +79,10 @@ function nameAdd() {
         if (!$(this).hasClass('hasName')) {
             $(this).addClass('hasName');
             $(this).find('.operator_name').remove();
-            $(this).find('img').after('<div class="operator_info" title="'+opLang+'"><span class="operator_name '+opLang+'"></span><div class="operator_load"></div><div class="operator_capacity"><div class="operator_ind"></div></div></div>');
+            $(this).find('img').after('<div class="operator_info" title="'+opLang+'"><div class="operator_name '+opLang+' '+opSkill+'"><span></span></div><div class="operator_load"></div><div class="operator_capacity"><div class="operator_ind"></div></div></div>');
         }
 
-        $(this).find('.operator_name').html(opName);
+        $(this).find('.operator_name span').html(opName);
         $(this).find('.operator_load').html(opLoad+'/'+opThrottle);
         if (opLoad > opThrottle) {
             $(this).find('.operator_load').addClass('red').addClass('highlight');
@@ -141,14 +149,14 @@ function nameAdd() {
     if ((greenLoad >= greenThrottle) && (blueLoad >= blueThrottle)) {
         $('.moar-chat').html('<br>*** MORECHAT ***');
     } else if (greenOpen < 1) {
-        $('.moar-chat').html('<br>* GREEN HEs ARE FULL *');
+        $('.moar-chat').html('<br>* ALL GREEN HEs ARE FULL *');
     } else if (greenOpen < 3) {
         $('.moar-chat').html('<br>Green HEs are almost full');
     } else {
         $('.moar-chat').html('');
     }
 
-    if (throttleTwo > throttleThree) {
+    if (throttleTwo > (throttleThree + throttleFour + throttleMore)) {
         $('.alert-throttle').addClass('alert-on');
     } else {
         $('.alert-throttle').removeClass('alert-on');
