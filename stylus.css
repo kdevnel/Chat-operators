@@ -10,9 +10,9 @@
  
 /* --- Sidebar width --- */
     .chat__chat-queue {
-        -ms-flex: 0 1 320px;
-        flex: 0 1 320px;
-        min-width: 320px;
+        -ms-flex: 0 1 350px;
+        flex: 0 1 350px;
+        min-width: 350px;
     }
  
 /* --- Hide some stuff we don't need --- */    
@@ -25,9 +25,9 @@
 /* --- Operators box --- */
     .chat__chat-queue .capacity__operators {
         height: 300px;
-        overflow-y: scroll;
+        overflow-y: auto;
         border: solid 1px #c0c0c0;
-        padding: 10px;
+        padding: 2px 0;
         margin: 10px;
         background: #ffffff;
         resize: vertical;
@@ -48,12 +48,19 @@
     .chat__chat-queue .operators {
         display: block;
         clear: both;
-        margin: 0 0 5px 0;
+        margin: 0;
         overflow:hidden;
         font-size: 12px;
         line-height: 23px;
+        padding: 3px 10px 2px 5px;
+        border-bottom: solid 1px #e8e8e8;
     }
- 
+
+    .chat__chat-queue .operators__reserve {
+        background: #ededed;
+        border-bottom: solid 1px #e0e0e0;        
+    } 
+
 /* --- Removes double entries (is bug) --- */
     .chat__chat-queue .operator_info {
         display: none;
@@ -66,8 +73,9 @@
     .chat__chat-queue .operators img {
         float: left;
         margin-right: 5px;
-        width: 22px;
-        height: 22px;
+        margin-bottom: 0;
+        width: 23px;
+        height: 23px;
         border: solid 3px transparent;
     }
  
@@ -80,11 +88,16 @@
     .chat__chat-queue .operator_name {
         float:left;
         padding-right: 10px;
+        height: 23px;
+    }
+
+.chat__chat-queue .operator_name span {
         font-weight: bold;
-        max-width: 125px;
+        max-width: 110px;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
+        text-overflow: ellipsis;  
+        display: inline-block;
     }
 
     .chat__chat-queue .operator_name.es, 
@@ -103,6 +116,21 @@
     .chat__chat-queue .operator_name.es {
         background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Spain_-_Circle-512.png');
      }
+
+    .chat__chat-queue .operator_name.atomic::after {
+        content: "A";
+        background: #c1dbec;
+        border-radius: 25px;
+        text-align: center;
+        line-height: 17px;
+        display: block;
+        float: right;
+        width: 17px;
+        height: 17px;
+        margin-left: 3px;
+        margin-top: 2px;
+        border: solid 1px #666666;
+    }
 
     .chat__chat-queue .operator_load {
         float: right;
