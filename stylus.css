@@ -56,10 +56,6 @@
         border-bottom: solid 1px #e8e8e8;
     }
 
-    .chat__chat-queue .operators__reserve {
-        background: #ededed;
-        border-bottom: solid 1px #e0e0e0;        
-    } 
 
 /* --- Removes double entries (is bug) --- */
     .chat__chat-queue .operator_info {
@@ -91,7 +87,7 @@
         height: 23px;
     }
 
-.chat__chat-queue .operator_name span {
+    .chat__chat-queue .operator_name span {
         font-weight: bold;
         max-width: 110px;
         white-space: nowrap;
@@ -99,6 +95,11 @@
         text-overflow: ellipsis;  
         display: inline-block;
     }
+
+    .chat__chat-queue .operators__unavailable .operator_name span {color: #d94f4f;}
+    .chat__chat-queue .operators__available .operator_name span {color: #33aa55;}
+    .chat__chat-queue .operators__reserve .operator_name span {color: #0087be;}
+    .chat__chat-queue .operators__busy .operator_name span {color: #dd9922;}
 
     .chat__chat-queue .operator_name.es, 
     .chat__chat-queue .operator_name.pt-br {
