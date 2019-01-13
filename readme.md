@@ -2,6 +2,7 @@
 
 - improves view of chat operators, their load and throttle
 - adds language flags to HEs who speak ES or PT/BR
+- adds indicators for Atomic Guild members
 - adds button to remove red HEs
 - adds button to copy all HEs info to clipboard
 - adds general stats for throttle, availability, etc.
