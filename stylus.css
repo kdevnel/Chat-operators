@@ -88,7 +88,7 @@
 
     .chat__chat-queue .operator_name span {
         font-weight: bold;
-        max-width: 110px;
+        max-width: 115px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;  
