@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    https://github.com/senff/Chat-operators
-// @version      1.3
+// @version      1.31
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -54,7 +54,7 @@ function nameAdd() {
             opLang = "";
         }
 
-        if(opInfo.includes('atomic')) {
+        if(opInfo.includes('atomic') && !opInfo.includes('fresatomica')) { 
             opSkill = "atomic";
         } else {
             opSkill = "";
