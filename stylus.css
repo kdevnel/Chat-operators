@@ -88,7 +88,7 @@
 
     .chat__chat-queue .operator_name span {
         font-weight: bold;
-        max-width: 115px;
+        max-width: 145px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;  
@@ -247,6 +247,10 @@
 
     .chat__current-chat__actions textarea {
         height: 110px;
+    }
+
+    .chat__current-chat__actions textarea.note {
+        background-color: #FFFFCC;
     }
 
     .chat-panel__return-to-now {
