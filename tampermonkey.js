@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    https://github.com/senff/Chat-operators
-// @version      1.31
+// @version      1.4
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -54,7 +54,7 @@ function nameAdd() {
             opLang = "";
         }
 
-        if(opInfo.includes('atomic') && !opInfo.includes('fresatomica')) { 
+        if(opInfo.includes('atomic') && !opInfo.includes('fresatomica')) { // Because Oliwia has "atomic" in her username :D
             opSkill = "atomic";
         } else {
             opSkill = "";
@@ -202,6 +202,25 @@ $("body").on('click','#showRedHEs', function () {
     $('#hideRedHEs').show();
 });
 
+$("body").on('click','#showRedHEs', function () {
+    $('.hideredhes').remove();
+    $(this).hide();
+    $('#hideRedHEs').show();
+});
+
+$("body").on('keyup click change','.chat-actions__current-chat-action-compose textarea', function(){
+    highlightNote();
+});
+
+function highlightNote(){
+    var boxContents = $('.chat-actions__current-chat-action-compose textarea').val();
+    var entryField = boxContents.toLowerCase();
+    if (entryField.startsWith('/note ')) {
+        $('.chat-actions__current-chat-action-compose textarea').addClass('note');
+    } else {
+        $('.chat-actions__current-chat-action-compose textarea').removeClass('note');
+    }
+}
 
 function copyDataToClipboard(elem) {
     // create hidden text element, if it doesn't already exist
