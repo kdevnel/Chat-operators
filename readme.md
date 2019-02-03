@@ -6,6 +6,7 @@
 - adds button to remove red HEs
 - adds button to copy all HEs info to clipboard
 - adds general stats for throttle, availability, etc.
+- highlights the textarea when you write a /note
 
 
 ## REQUIREMENTS:
