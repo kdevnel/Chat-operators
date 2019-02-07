@@ -36,4 +36,4 @@ Tampermonkey does the same, but for Javascript, to modify functionality.
 9. **SAVE**
 
 ## MORE INFORMATION:
-https://heinvestigations.wordpress.com/2018/01/17/happychat-operators-redesign/
+https://heinvestigations.wordpress.com/2019/01/14/happy-suite-of-happiness-hacks/
