@@ -132,6 +132,23 @@
         border: solid 1px #666666;
     }
 
+    .chat__chat-queue .operator_name.concierge span::after {
+        content: "1:1";
+        font-size: 9px;
+        font-weight: normal;
+        color: #ffffff;
+        background: #1b74b0;
+        border-radius: 25px;
+        text-align: center;
+        line-height: 19px;
+        display: block;
+        float: right;
+        width: 19px;
+        height: 19px;
+        margin-left: 3px;
+        margin-top: 2px;
+    }
+
     .chat__chat-queue .operator_load {
         float: right;
         width: 20px;
