@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    https://github.com/senff/Chat-operators
-// @version      1.4
+// @version      1.41
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -35,8 +35,10 @@ function nameAdd() {
     var HEsYellow = 'YELLOW: ';
     var HEsRed = 'RED: ';
     var allHEs = '';
+    var opSkills = '';
     var opLang = '';
-    var opSkill = '';
+    var opSkillAtomic = '';
+    var opSkillConcierge = '';
 
     if(($('.chat__chat-queue .capacity__operators').length) && (!$('.chat__chat-queue .operators_stats').length)) {
         $('.chat__chat-queue .capacity__operators').after('<div class="operators_stats stats_open"><h4>Operator stats <div class="stats_toggle"></div></h4><div class="operators_all_stats" style="display: block;"><div class="stats-block"><strong>Total HEs</strong>: <span class="all-ops">0</span> ( <strong class="green ops-green">0</strong>  <strong class="yellow ops-yellow">0</strong>  <strong class="blue ops-blue">0</strong>  <strong class="red ops-red">0</strong> )</div><div class="stats-block"><strong>GREEN HEs:</strong><br><span class="throttle-one throttle-count">0</span> have a throttle of 1<br><span class="throttle-two throttle-count">0</span> have a throttle of 2 <span class="alert-throttle" title="More HEs with throttle 2 than throttle 3">!</span><br><span class="throttle-three throttle-count">0</span> have a throttle of 3<br><span class="throttle-four throttle-count">0</span> have a throttle of 4<br><span class="throttle-more throttle-count">0</span> have a throttle of more than 4<br></div><div class="stats-block"><strong>All green HEs load</strong>: <span class="green-ops-load">0</span><br><strong>All green HEs throttle</strong>: <span class="green-ops-throttle">0</span><br><strong>Green HEs open</strong>: <span class="green-ops-open">0</span> <strong class="moar-chat red"></strong></div></div></div>');
@@ -49,15 +51,21 @@ function nameAdd() {
         if(opInfo.includes('pt-br')) {
             opLang = "pt-br";
         } else if(opInfo.includes(': es') || opInfo.includes(', es')){
-            opLang = "es";
+            opSkills = opSkills + "es ";
         } else {
-            opLang = "";
+            opSkills = "";
         }
 
         if(opInfo.includes('atomic') && !opInfo.includes('fresatomica')) { // Because Oliwia has "atomic" in her username :D
-            opSkill = "atomic";
+            opSkills = opSkills + "atomic ";
         } else {
-            opSkill = "";
+            opSkills = "";
+        }
+
+        if(opInfo.includes('WPconcierge')) {
+            opSkills = opSkills + "concierge ";
+        } else {
+            opSkills = "";
         }
 
         var opName = opInfo.substring(opInfo.lastIndexOf("(")+1,opInfo.lastIndexOf(")"));
@@ -79,7 +87,7 @@ function nameAdd() {
         if (!$(this).hasClass('hasName')) {
             $(this).addClass('hasName');
             $(this).find('.operator_name').remove();
-            $(this).find('img').after('<div class="operator_info" title="'+opLang+'"><div class="operator_name '+opLang+' '+opSkill+'"><span></span></div><div class="operator_load"></div><div class="operator_capacity"><div class="operator_ind"></div></div></div>');
+            $(this).find('img').after('<div class="operator_info" title="'+opLang+'"><div class="operator_name '+opSkills+'"><span></span></div><div class="operator_load"></div><div class="operator_capacity"><div class="operator_ind"></div></div></div>');
         }
 
         $(this).find('.operator_name span').html(opName);
@@ -211,6 +219,10 @@ $("body").on('click','#showRedHEs', function () {
 $("body").on('keyup click change','.chat-actions__current-chat-action-compose textarea', function(){
     highlightNote();
 });
+
+window.setInterval(function(){
+    highlightNote();
+}, 2500);
 
 function highlightNote(){
     var boxContents = $('.chat-actions__current-chat-action-compose textarea').val();
