@@ -100,20 +100,25 @@
     .chat__chat-queue .operators__reserve .operator_name span {color: #0087be;}
     .chat__chat-queue .operators__busy .operator_name span {color: #dd9922;}
 
-    .chat__chat-queue .operator_name.es, 
-    .chat__chat-queue .operator_name.pt-br {
-        background-repeat: no-repeat;
-        background-position: left center;
-        background-size: auto 19px;
-        padding-left: 23px;
-        margin-left: -3px;
+    .chat__chat-queue .operator_name.es span::before, 
+    .chat__chat-queue .operator_name.pt-br::before {
+        content: "";
+        border-radius: 25px;
+        display: block;
+        float: left;
+        width: 19px;
+        height: 19px;
+        margin-right: 3px;
+        margin-top: 2px;
+        background-size: auto 100%;
      }
 
-    .chat__chat-queue .operator_name.pt-br {
+    .chat__chat-queue .operator_name.pt-br::before {
         background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Brazil_-_Circle-512.png');
+        margin-left: -2px;
      }
 
-    .chat__chat-queue .operator_name.es {
+    .chat__chat-queue .operator_name.es span::before {
         background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Spain_-_Circle-512.png');
      }
 
