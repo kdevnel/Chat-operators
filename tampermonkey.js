@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    https://github.com/senff/Chat-operators
-// @version      1.41
+// @version      1.42
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -49,7 +49,7 @@ function nameAdd() {
         var opInfo = $(this).find('img').attr('title');
         // var opName = opInfo.substring(0, opInfo.indexOf(' ') + 1);
         if(opInfo.includes('pt-br')) {
-            opLang = "pt-br";
+            opSkills = "pt-br";
         } else if(opInfo.includes(': es') || opInfo.includes(', es')){
             opSkills = opSkills + "es ";
         } else {
@@ -58,15 +58,11 @@ function nameAdd() {
 
         if(opInfo.includes('atomic') && !opInfo.includes('fresatomica')) { // Because Oliwia has "atomic" in her username :D
             opSkills = opSkills + "atomic ";
-        } else {
-            opSkills = "";
-        }
+        } 
 
         if(opInfo.includes('WPconcierge')) {
             opSkills = opSkills + "concierge ";
-        } else {
-            opSkills = "";
-        }
+        } 
 
         var opName = opInfo.substring(opInfo.lastIndexOf("(")+1,opInfo.lastIndexOf(")"));
         var opLoadPos = opInfo.indexOf('Load: ');
