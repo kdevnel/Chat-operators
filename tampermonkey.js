@@ -35,7 +35,6 @@ function nameAdd() {
     var HEsYellow = 'YELLOW: ';
     var HEsRed = 'RED: ';
     var allHEs = '';
-    var opSkills = '';
     var opLang = '';
     var opSkillAtomic = '';
     var opSkillConcierge = '';
@@ -46,23 +45,25 @@ function nameAdd() {
 
     $('.chat__chat-queue .operators').each(function( index ) {
 
+        var opSkills = '';
         var opInfo = $(this).find('img').attr('title');
         // var opName = opInfo.substring(0, opInfo.indexOf(' ') + 1);
+
         if(opInfo.includes('pt-br')) {
-            opSkills = "pt-br";
-        } else if(opInfo.includes(': es') || opInfo.includes(', es')){
-            opSkills = opSkills + "es ";
-        } else {
-            opSkills = "";
+            opSkills = " pt-br ";
+        }
+
+        if(opInfo.includes(': es') || opInfo.includes(', es') || opInfo.includes('es,')){
+            opSkills = opSkills + " es ";
         }
 
         if(opInfo.includes('atomic') && !opInfo.includes('fresatomica')) { // Because Oliwia has "atomic" in her username :D
-            opSkills = opSkills + "atomic ";
-        } 
+            opSkills = opSkills + " atomic ";
+        }
 
         if(opInfo.includes('WPconcierge')) {
-            opSkills = opSkills + "concierge ";
-        } 
+            opSkills = opSkills + " concierge ";
+        }
 
         var opName = opInfo.substring(opInfo.lastIndexOf("(")+1,opInfo.lastIndexOf(")"));
         var opLoadPos = opInfo.indexOf('Load: ');
