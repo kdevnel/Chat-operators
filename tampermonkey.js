@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Happychat Operators
 // @namespace    https://github.com/senff/Chat-operators
-// @version      1.42
+// @version      1.5
 // @description  List of operators
 // @author       Senff
 // @require      https://code.jquery.com/jquery-1.12.4.js
@@ -71,9 +71,7 @@ function nameAdd() {
         var opThrottlePos = opInfo.indexOf('Throttle: ');
         var opThrottle = opInfo.substr(opThrottlePos+10, 1);
         var opCapacity = opLoad/opThrottle * 100;
-        if (opCapacity > 100) {
-            opCapacity = 100;
-        }
+
         var opCapLevel = parseInt(opLoad/opThrottle * 10);
         if (opCapLevel > 10) {
             opCapLevel = 'Over';
@@ -84,33 +82,27 @@ function nameAdd() {
         if (!$(this).hasClass('hasName')) {
             $(this).addClass('hasName');
             $(this).find('.operator_name').remove();
-            $(this).find('img').after('<div class="operator_info" title="'+opLang+'"><div class="operator_name '+opSkills+'"><span></span></div><div class="operator_users" style="float: right;"></div></div>');
+            $(this).find('img').after('<div class="operator_info" title="'+opLang+'"><div class="operator_name '+opSkills+'"><span></span></div><div class="operator_load"></div><div class="operator_capacity"><div class="operator_ind"></div></div></div>');
         }
 
+        $(this).find('.operator_capacity').css('width',((opThrottle*14)+2)+'px');
         $(this).find('.operator_name span').html(opName);
         $(this).find('.operator_load').html(opLoad+'/'+opThrottle);
-
-        var usersInChat = 0;
-        var usersOver = 0;
-        var usersUnder = 0;
-        var usersIndicator = "";
-        for (usersInChat = 0; usersInChat < opLoad; usersInChat++) {
-            usersIndicator = "<div class='slot slot_user'></div>" + usersIndicator ;
-        }
-
         if (opLoad > opThrottle) {
-            var overLoad = opLoad - opThrottle;
-            for (usersOver = 0; usersOver < overLoad; usersOver++) {
-                usersIndicator = "<div class='slot slot_over'></div>" + usersIndicator;
-            }
+            $(this).find('.operator_load').addClass('red').addClass('highlight');
         } else {
-            var underLoad = opThrottle - opLoad;
-            for (usersUnder = 0; usersUnder < underLoad; usersUnder++) {
-                usersIndicator = "<div class='slot slot_open'></div>" + usersIndicator;
-            }
+            $(this).find('.operator_load').removeClass('red').removeClass('highlight');
         }
 
-        $(this).find('.operator_users').html(usersIndicator);
+        if (opCapacity == 100) {
+            $(this).find('.operator_capacity').addClass('fullHE');
+        } else if (opCapacity > 100) {
+            $(this).find('.operator_capacity').addClass('overloadHE');
+        } else {
+            $(this).find('.operator_capacity').removeClass('fullHE').removeClass('overloadHE');
+        }
+
+        $(this).find('.operator_ind').css('width',opCapacity+'%');
 
         if ($(this).hasClass('operators__available')) {
             opsGreen++;
