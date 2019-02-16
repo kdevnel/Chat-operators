@@ -84,17 +84,33 @@ function nameAdd() {
         if (!$(this).hasClass('hasName')) {
             $(this).addClass('hasName');
             $(this).find('.operator_name').remove();
-            $(this).find('img').after('<div class="operator_info" title="'+opLang+'"><div class="operator_name '+opSkills+'"><span></span></div><div class="operator_load"></div><div class="operator_capacity"><div class="operator_ind"></div></div></div>');
+            $(this).find('img').after('<div class="operator_info" title="'+opLang+'"><div class="operator_name '+opSkills+'"><span></span></div><div class="operator_users" style="float: right;"></div></div>');
         }
 
         $(this).find('.operator_name span').html(opName);
         $(this).find('.operator_load').html(opLoad+'/'+opThrottle);
-        if (opLoad > opThrottle) {
-            $(this).find('.operator_load').addClass('red').addClass('highlight');
-        } else {
-            $(this).find('.operator_load').removeClass('red').removeClass('highlight');
+
+        var usersInChat = 0;
+        var usersOver = 0;
+        var usersUnder = 0;
+        var usersIndicator = "";
+        for (usersInChat = 0; usersInChat < opLoad; usersInChat++) {
+            usersIndicator = "<div class='slot slot_user'></div>" + usersIndicator ;
         }
-        $(this).find('.operator_ind').css('width',opCapacity+'%');
+
+        if (opLoad > opThrottle) {
+            var overLoad = opLoad - opThrottle;
+            for (usersOver = 0; usersOver < overLoad; usersOver++) {
+                usersIndicator = "<div class='slot slot_over'></div>" + usersIndicator;
+            }
+        } else {
+            var underLoad = opThrottle - opLoad;
+            for (usersUnder = 0; usersUnder < underLoad; usersUnder++) {
+                usersIndicator = "<div class='slot slot_open'></div>" + usersIndicator;
+            }
+        }
+
+        $(this).find('.operator_users').html(usersIndicator);
 
         if ($(this).hasClass('operators__available')) {
             opsGreen++;
