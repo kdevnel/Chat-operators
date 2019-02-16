@@ -115,7 +115,6 @@
 
     .chat__chat-queue .operator_name.pt-br::before {
         background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Brazil_-_Circle-512.png');
-        margin-left: -2px;
      }
 
     .chat__chat-queue .operator_name.es span::before {
@@ -161,31 +160,43 @@
     }
  
     .chat__chat-queue .operator_capacity {
-        width: 50px;
         height: 8px;
-        background: #cccccc;
+        background: #e7e7e7;
+        background: linear-gradient(to bottom, #cccccc, #eaeaea);
         float:right;
         border-radius: 5px;
-        overflow:hidden;
         margin: 8px 5px;
+        border: solid 1px #cccccc;
+        border-style: inset;
     }
+
+    .chat__chat-queue .fullHE,
+    .chat__chat-queue .overloadHE {
+        border-left: solid 1px #660000;
+        border-top: solid 1px #660000;
+        height: 9px;
+    }
+
+/* border: solid 1px #d94f4f; height: 8px; margin-top:-1px; */
  
     .chat__chat-queue .operator_ind {
         height: 100%;
+        max-width: 100%;
         border-radius: 5px;
+        float: right;
     }
  
 /* --- Load/throttle colors --- */
-    .capLevel0 .operator_ind {background: #4ab866;}
-    .capLevel1 .operator_ind {background: #4ab866;}
-    .capLevel2 .operator_ind {background: #4ab866;}
-    .capLevel3 .operator_ind {background: #4ab866;}
-    .capLevel4 .operator_ind {background: #4ab866;}
-    .capLevel5 .operator_ind {background: #4ab866;}
-    .capLevel6 .operator_ind {background: #f0b849;}
-    .capLevel7 .operator_ind {background: #f0b849;}
-    .capLevel8 .operator_ind {background: #f0b849;}
-    .capLevel9 .operator_ind {background: #f0b849;}
+    .capLevel0 .operator_ind,
+    .capLevel1 .operator_ind,
+    .capLevel2 .operator_ind,
+    .capLevel3 .operator_ind,
+    .capLevel4 .operator_ind,
+    .capLevel5 .operator_ind {background: #44bb66;}
+    .capLevel6 .operator_ind,
+    .capLevel7 .operator_ind,
+    .capLevel8 .operator_ind,
+    .capLevel9 .operator_ind {background: #ffaa22;}
     .capLevel10 .operator_ind {background: #d94f4f;}
     .capLevelOver .operator_ind {background: #660000;}
  
