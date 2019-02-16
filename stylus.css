@@ -115,7 +115,6 @@
 
     .chat__chat-queue .operator_name.pt-br::before {
         background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Brazil_-_Circle-512.png');
-        margin-left: -2px;
      }
 
     .chat__chat-queue .operator_name.es span::before {
@@ -153,6 +152,25 @@
         margin-left: 3px;
         margin-top: 2px;
     }
+
+    .chat__chat-queue .operator_users .slot {
+        width: 15px;
+        height: 15px;
+        border-radius: 20px;
+        float: left;
+        margin-left: 3px;
+        margin-top: 4px;
+        background: #c0c0c0;
+    }
+
+
+.chat__chat-queue .operator_users .slot_user {
+    background: #1b74b0;
+}
+
+.chat__chat-queue .operator_users .slot_over {
+    background: #d94f4f;
+}
 
     .chat__chat-queue .operator_load {
         float: right;
