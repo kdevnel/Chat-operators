@@ -164,18 +164,19 @@
 
         .chat__chat-queue .operator_load {
             float: right;
-            width: 20px;
+            width: 16px;
             text-align: right;
+            font-size: 11px;
         }
      
         .chat__chat-queue .operator_capacity {
             height: 8px;
             background: #e7e7e7;
-            background: linear-gradient(to bottom, #cccccc, #eaeaea);
+            background: linear-gradient(to bottom, #dddddd, #eaeaea);
             float:right;
             border-radius: 5px;
             margin: 8px 5px;
-            border: solid 1px #cccccc;
+            border: solid 1px #e0e0e0;
             border-style: inset;
         }
 
@@ -306,4 +307,5 @@
         .chat__current-chat__actions button {
             display: none;
         }
+    
 }
