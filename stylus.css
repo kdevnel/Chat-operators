@@ -1,299 +1,309 @@
-/* i really want this to be global */
- 
-/* --- General styles --- */
-    .chat__chat-queue .red {color:#d94f4f;}
-    .chat__chat-queue .blue {color:#0087be;}
-    .chat__chat-queue .green {color:#4ab866;}
-    .chat__chat-queue .yellow {color:#f0b849;}
-    .chat__chat-queue .highlight {font-weight: bold;}
- 
- 
-/* --- Sidebar width --- */
-    .chat__chat-queue {
-        -ms-flex: 0 1 350px;
-        flex: 0 1 350px;
-        min-width: 350px;
-    }
- 
-/* --- Hide some stuff we don't need --- */    
-    .chat__chat-queue .operators__offline,
-    .chat__chat-queue .operators.operators:before,
-    .chat__chat-queue .operators__capacity {
-        display: none;
-    }
- 
-/* --- Operators box --- */
-    .chat__chat-queue .capacity__operators {
-        height: 300px;
-        overflow-y: auto;
-        border: solid 1px #c0c0c0;
-        padding: 2px 0;
-        margin: 10px;
-        background: #ffffff;
-        resize: vertical;
-    }
+/* ==UserStyle==
+@name           Happychat Operators
+@namespace      github.com/senff/Chat-operators
+@version        1.5
+@description    Make the Happychat Operators list easier to understand.
+@author         Senff
+@updateURL      https://raw.githubusercontent.com/senff/Chat-operators/master/stylus.css
+==/UserStyle== */
 
-    .chat__chat-queue .capacity .button {
-        margin:0 10px 10px 10px;
-    }
+@-moz-document domain("hud.happychat.io") {
 
-    #operatorData {
-        width:0; 
-        height: 0; 
-        font-size: 0; 
-        overflow: hidden;
-    }
- 
-/* --- Each individual operator line --- */
-    .chat__chat-queue .operators {
-        display: block;
-        clear: both;
-        margin: 0;
-        overflow:hidden;
-        font-size: 12px;
-        line-height: 23px;
-        padding: 3px 10px 2px 5px;
-    }
+    /* --- General styles --- */
+        .chat__chat-queue .red {color:#d94f4f;}
+        .chat__chat-queue .blue {color:#0087be;}
+        .chat__chat-queue .green {color:#4ab866;}
+        .chat__chat-queue .yellow {color:#f0b849;}
+        .chat__chat-queue .highlight {font-weight: bold;}
+     
+     
+    /* --- Sidebar width --- */
+        .chat__chat-queue {
+            -ms-flex: 0 1 350px;
+            flex: 0 1 350px;
+            min-width: 350px;
+        }
+     
+    /* --- Hide some stuff we don't need --- */    
+        .chat__chat-queue .operators__offline,
+        .chat__chat-queue .operators.operators:before,
+        .chat__chat-queue .operators__capacity {
+            display: none;
+        }
+     
+    /* --- Operators box --- */
+        .chat__chat-queue .capacity__operators {
+            height: 300px;
+            overflow-y: auto;
+            border: solid 1px #c0c0c0;
+            padding: 2px 0;
+            margin: 10px;
+            background: #ffffff;
+            resize: vertical;
+        }
+
+        .chat__chat-queue .capacity .button {
+            margin:0 10px 10px 10px;
+        }
+
+        #operatorData {
+            width:0; 
+            height: 0; 
+            font-size: 0; 
+            overflow: hidden;
+        }
+     
+    /* --- Each individual operator line --- */
+        .chat__chat-queue .operators {
+            display: block;
+            clear: both;
+            margin: 0;
+            overflow:hidden;
+            font-size: 12px;
+            line-height: 23px;
+            padding: 3px 10px 2px 5px;
+        }
 
 
-/* --- Removes double entries (is bug) --- */
-    .chat__chat-queue .operator_info {
-        display: none;
-    }
-    .chat__chat-queue .operator_info:nth-of-type(1) {
-        display: block;
-    }
- 
-/* --- Operator icon/name/load/etc. --- */    
-    .chat__chat-queue .operators img {
-        float: left;
-        margin-right: 5px;
-        margin-bottom: 0;
-        width: 23px;
-        height: 23px;
-        border: solid 3px transparent;
-    }
- 
-        /* --- Avatar status colors --- */    
-        .chat__chat-queue .operators__available img {border-color:#4ab866;}
-        .chat__chat-queue .operators__reserve img {border-color:#0087be;}
-        .chat__chat-queue .operators__busy img {border-color:#f0b849;}
-        .chat__chat-queue .operators__unavailable img {border-color:#d94f4f;}
- 
-    .chat__chat-queue .operator_name {
-        float:left;
-        padding-right: 10px;
-        height: 23px;
-    }
+    /* --- Removes double entries (is bug) --- */
+        .chat__chat-queue .operator_info {
+            display: none;
+        }
+        .chat__chat-queue .operator_info:nth-of-type(1) {
+            display: block;
+        }
+     
+    /* --- Operator icon/name/load/etc. --- */    
+        .chat__chat-queue .operators img {
+            float: left;
+            margin-right: 5px;
+            margin-bottom: 0;
+            width: 23px;
+            height: 23px;
+            border: solid 3px transparent;
+        }
+     
+            /* --- Avatar status colors --- */    
+            .chat__chat-queue .operators__available img {border-color:#4ab866;}
+            .chat__chat-queue .operators__reserve img {border-color:#0087be;}
+            .chat__chat-queue .operators__busy img {border-color:#f0b849;}
+            .chat__chat-queue .operators__unavailable img {border-color:#d94f4f;}
+     
+        .chat__chat-queue .operator_name {
+            float:left;
+            padding-right: 10px;
+            height: 23px;
+        }
 
-    .chat__chat-queue .operator_name span {
-        font-weight: bold;
-        max-width: 145px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;  
-        display: inline-block;
-    }
+        .chat__chat-queue .operator_name span {
+            font-weight: bold;
+            max-width: 145px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;  
+            display: inline-block;
+        }
 
-    .chat__chat-queue .operators__unavailable .operator_name span {color: #d94f4f;}
-    .chat__chat-queue .operators__available .operator_name span {color: #33aa55;}
-    .chat__chat-queue .operators__reserve .operator_name span {color: #0087be;}
-    .chat__chat-queue .operators__busy .operator_name span {color: #dd9922;}
+        .chat__chat-queue .operators__unavailable .operator_name span {color: #d94f4f;}
+        .chat__chat-queue .operators__available .operator_name span {color: #33aa55;}
+        .chat__chat-queue .operators__reserve .operator_name span {color: #0087be;}
+        .chat__chat-queue .operators__busy .operator_name span {color: #dd9922;}
 
-    .chat__chat-queue .operator_name.es span::before, 
-    .chat__chat-queue .operator_name.pt-br::before {
-        content: "";
-        border-radius: 25px;
-        display: block;
-        float: left;
-        width: 19px;
-        height: 19px;
-        margin-right: 3px;
-        margin-top: 2px;
-        background-size: auto 100%;
-     }
+        .chat__chat-queue .operator_name.es span::before, 
+        .chat__chat-queue .operator_name.pt-br::before {
+            content: "";
+            border-radius: 25px;
+            display: block;
+            float: left;
+            width: 19px;
+            height: 19px;
+            margin-right: 3px;
+            margin-top: 2px;
+            background-size: auto 100%;
+         }
 
-    .chat__chat-queue .operator_name.pt-br::before {
-        background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Brazil_-_Circle-512.png');
-     }
+        .chat__chat-queue .operator_name.pt-br::before {
+            background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Brazil_-_Circle-512.png');
+         }
 
-    .chat__chat-queue .operator_name.es span::before {
-        background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Spain_-_Circle-512.png');
-     }
+        .chat__chat-queue .operator_name.es span::before {
+            background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Spain_-_Circle-512.png');
+         }
 
-    .chat__chat-queue .operator_name.atomic::after {
-        content: "A";
-        background: #c1dbec;
-        border-radius: 25px;
-        text-align: center;
-        line-height: 17px;
-        display: block;
-        float: right;
-        width: 17px;
-        height: 17px;
-        margin-left: 3px;
-        margin-top: 2px;
-        border: solid 1px #666666;
-    }
+        .chat__chat-queue .operator_name.atomic::after {
+            content: "A";
+            background: #c1dbec;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 17px;
+            display: block;
+            float: right;
+            width: 17px;
+            height: 17px;
+            margin-left: 3px;
+            margin-top: 2px;
+            border: solid 1px #666666;
+        }
 
-    .chat__chat-queue .operator_name.concierge span::after {
-        content: "1:1";
-        font-size: 9px;
-        font-weight: normal;
-        color: #ffffff;
-        background: #1b74b0;
-        border-radius: 25px;
-        text-align: center;
-        line-height: 19px;
-        display: block;
-        float: right;
-        width: 19px;
-        height: 19px;
-        margin-left: 3px;
-        margin-top: 2px;
-    }
+        .chat__chat-queue .operator_name.concierge span::after {
+            content: "1:1";
+            font-size: 9px;
+            font-weight: normal;
+            color: #ffffff;
+            background: #1b74b0;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 19px;
+            display: block;
+            float: right;
+            width: 19px;
+            height: 19px;
+            margin-left: 3px;
+            margin-top: 2px;
+        }
 
-    .chat__chat-queue .operator_load {
-        float: right;
-        width: 20px;
-        text-align: right;
-    }
- 
-    .chat__chat-queue .operator_capacity {
-        height: 8px;
-        background: #e7e7e7;
-        background: linear-gradient(to bottom, #cccccc, #eaeaea);
-        float:right;
-        border-radius: 5px;
-        margin: 8px 5px;
-        border: solid 1px #cccccc;
-        border-style: inset;
-    }
+        .chat__chat-queue .operator_load {
+            float: right;
+            width: 20px;
+            text-align: right;
+        }
+     
+        .chat__chat-queue .operator_capacity {
+            height: 8px;
+            background: #e7e7e7;
+            background: linear-gradient(to bottom, #cccccc, #eaeaea);
+            float:right;
+            border-radius: 5px;
+            margin: 8px 5px;
+            border: solid 1px #cccccc;
+            border-style: inset;
+        }
 
-    .chat__chat-queue .fullHE,
-    .chat__chat-queue .overloadHE {
-        border-left: solid 1px #660000;
-        border-top: solid 1px #660000;
-        height: 9px;
-    }
+        .chat__chat-queue .fullHE,
+        .chat__chat-queue .overloadHE {
+            border-left: solid 1px #660000;
+            border-top: solid 1px #660000;
+            height: 9px;
+        }
 
-/* border: solid 1px #d94f4f; height: 8px; margin-top:-1px; */
- 
-    .chat__chat-queue .operator_ind {
-        height: 100%;
-        max-width: 100%;
-        border-radius: 5px;
-        float: right;
-    }
- 
-/* --- Load/throttle colors --- */
-    .capLevel0 .operator_ind,
-    .capLevel1 .operator_ind,
-    .capLevel2 .operator_ind,
-    .capLevel3 .operator_ind,
-    .capLevel4 .operator_ind,
-    .capLevel5 .operator_ind {background: #44bb66;}
-    .capLevel6 .operator_ind,
-    .capLevel7 .operator_ind,
-    .capLevel8 .operator_ind,
-    .capLevel9 .operator_ind {background: #ffaa22;}
-    .capLevel10 .operator_ind {background: #d94f4f;}
-    .capLevelOver .operator_ind {background: #660000;}
- 
-/* --- Additional stats --- */
-    .operators_stats {
-        margin: 10px;
-        font-size: 12px;
-        border: solid 1px #c0c0c0;
-        background: #ffffff;
-    }
+    /* border: solid 1px #d94f4f; height: 8px; margin-top:-1px; */
+     
+        .chat__chat-queue .operator_ind {
+            height: 100%;
+            max-width: 100%;
+            border-radius: 5px;
+            float: right;
+        }
+     
+    /* --- Load/throttle colors --- */
+        .capLevel0 .operator_ind,
+        .capLevel1 .operator_ind,
+        .capLevel2 .operator_ind,
+        .capLevel3 .operator_ind,
+        .capLevel4 .operator_ind,
+        .capLevel5 .operator_ind {background: #44bb66;}
+        .capLevel6 .operator_ind,
+        .capLevel7 .operator_ind,
+        .capLevel8 .operator_ind,
+        .capLevel9 .operator_ind {background: #ffaa22;}
+        .capLevel10 .operator_ind {background: #d94f4f;}
+        .capLevelOver .operator_ind {background: #660000;}
+     
+    /* --- Additional stats --- */
+        .operators_stats {
+            margin: 10px;
+            font-size: 12px;
+            border: solid 1px #c0c0c0;
+            background: #ffffff;
+        }
 
-    .operators_stats h4 {
-        padding: 0 0 0 10px;
-        margin: 0;
-        background: #e0e0e0;
-        height: 26px;
-        line-height: 26px;
-        cursor: pointer;
-    }
+        .operators_stats h4 {
+            padding: 0 0 0 10px;
+            margin: 0;
+            background: #e0e0e0;
+            height: 26px;
+            line-height: 26px;
+            cursor: pointer;
+        }
 
-    .operators_all_stats {
-        display:none;
-    }
+        .operators_all_stats {
+            display:none;
+        }
 
-    .operators_stats.stats_open .operators_all_stats {
-        border-top: solid 1px #c0c0c0;
-    }
+        .operators_stats.stats_open .operators_all_stats {
+            border-top: solid 1px #c0c0c0;
+        }
 
-    .operators_stats h4 .stats_toggle {
-        float: right;
-        width: 0px;
-        height: 0px;
-        border-top: solid 10px #333333;
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-        margin: 7px 10px 0 0;
-    }
+        .operators_stats h4 .stats_toggle {
+            float: right;
+            width: 0px;
+            height: 0px;
+            border-top: solid 10px #333333;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            margin: 7px 10px 0 0;
+        }
 
-    .operators_stats.stats_open h4 .stats_toggle {
-        border-top: solid 0 #333333;
-        border-bottom: solid 10px #333333;
-        margin: 7px 10px 0 0;
-    }
+        .operators_stats.stats_open h4 .stats_toggle {
+            border-top: solid 0 #333333;
+            border-bottom: solid 10px #333333;
+            margin: 7px 10px 0 0;
+        }
 
-    .stats-block {
-        margin: 5px 0;
-        padding: 0 10px;
-    }
+        .stats-block {
+            margin: 5px 0;
+            padding: 0 10px;
+        }
 
-    .throttle-count {
-        margin-left: 15px;
-    }
+        .throttle-count {
+            margin-left: 15px;
+        }
 
-    .alert-throttle {
-        display: none;
-    }
+        .alert-throttle {
+            display: none;
+        }
 
-    .alert-on {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        left: 5px;
-        background: #ffcc22;
-        border-radius: 10px;
-        text-align: center;
-        font-weight: bold;
-        line-height: 16px;
-        font-size: 12px;
-        font-family: "times new roman";
-        cursor: default;
-    }
+        .alert-on {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            left: 5px;
+            background: #ffcc22;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;
+            font-size: 12px;
+            font-family: "times new roman";
+            cursor: default;
+        }
 
-    .chat-panel__unread-messages-notice {
-        display: none;
-    }
+        .chat-panel__unread-messages-notice {
+            display: none;
+        }
 
-    .chat__current-chat__actions,
-    .chat-actions__current-chat-action-compose {
-        height: 115px;
-    }
+        .chat__current-chat__actions,
+        .chat-actions__current-chat-action-compose {
+            height: 115px;
+        }
 
-    .chat__current-chat__actions textarea {
-        height: 110px;
-    }
+        .chat__current-chat__actions textarea {
+            height: 110px;
+        }
 
-    .chat__current-chat__actions textarea.note {
-        background-color: #FFFFCC;
-    }
+        .chat__current-chat__actions textarea.note {
+            background-color: #FFFFCC;
+        }
 
-    .chat-panel__return-to-now {
-        display: none;
-    }
+        .chat-panel__return-to-now {
+            display: none;
+        }
 
-    .chat__current-chat__actions textarea {
-        padding:5px 10px;
-    }
+        .chat__current-chat__actions textarea {
+            padding:5px 10px;
+        }
 
-    .chat__current-chat__actions button {
-        display: none;
-    }
+        .chat__current-chat__actions button {
+            display: none;
+        }
+}
