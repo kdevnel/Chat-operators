@@ -1,0 +1,238 @@
+/* ==UserStyle==
+@name           Happychat Operators (Dark Mode v2.0-alpha compatibility)
+@namespace      github.com/senff/Chat-operators
+@version        1.0
+@description    Make the Happychat Operators list easier to understand and compatible with Happy Chat Dark Mode v2.0-alpha.
+@author         Senff, kdevnel
+@updateURL      https://raw.githubusercontent.com/senff/Chat-operators/master/stylus.css
+==/UserStyle== */
+
+@-moz-document domain("hud.happychat.io") {
+
+/* --- General styles --- */
+    .chat__chat-queue .red {color:#da6364;}
+    .chat__chat-queue .blue {color:#0087be;}
+    .chat__chat-queue .green {color:#64d9af;}
+    .chat__chat-queue .yellow {color:#f0b849;}
+    .chat__chat-queue .highlight {font-weight: bold;}
+ 
+ 
+/* --- Sidebar width --- */
+    .chat__chat-queue {
+        -ms-flex: 0 1 320px;
+        flex: 0 1 320px;
+        min-width: 320px;
+    }
+ 
+/* --- Hide some stuff we don't need --- */    
+    .chat__chat-queue .operators__offline,
+    .chat__chat-queue .operators.operators:before,
+    .chat__chat-queue .operators__capacity {
+        display: none;
+    }
+ 
+/* --- Operators box --- */
+    .chat__chat-queue .capacity__operators {
+        height: 300px;
+        overflow-y: scroll;
+        border: solid 1px #c0c0c0;
+        padding: 10px;
+        margin: 10px;
+        background: transparent;
+        resize: vertical;
+    }
+ 
+ 
+/* --- Each individual operator line --- */
+    .chat__chat-queue .operators {
+        display: block;
+        clear: both;
+        margin: 0 0 5px 0;
+        overflow:hidden;
+        font-size: 12px;
+        line-height: 23px;
+    }
+ 
+/* --- Removes double entries (is bug) --- */
+    .chat__chat-queue .operator_info {
+        display: none;
+    }
+    .chat__chat-queue .operator_info:nth-of-type(1) {
+        display: block;
+    }
+.chat__chat-queue #operatorData {
+        display:none;
+    }
+ 
+ 
+/* --- Operator icon/name/load/etc. --- */    
+    .chat__chat-queue .operators img {
+        float: left;
+        margin-right: 10px;
+        width: 22px;
+        height: 22px;
+        border: solid 3px transparent;
+    }
+    .chat__chat-queue .operators .operator_name {
+        max-width: 137px;
+     }
+ 
+    /* --- Avatar status colors --- */    
+        .chat__chat-queue .operators__available img {border-color:#64d9af;}
+        .chat__chat-queue .operators__reserve img {border-color:#0087be;}
+        .chat__chat-queue .operators__busy img {border-color:#f0b849;}
+        .chat__chat-queue .operators__unavailable img {border-color:#da6364;}
+ 
+    .chat__chat-queue .operator_name {
+        float:left;
+        padding-right: 10px;
+        height: 23px;
+    }
+ 
+    .chat__chat-queue .operators__unavailable .operator_name span {color: #da6364;}
+    .chat__chat-queue .operators__available .operator_name span {color: #64d9af;}
+    .chat__chat-queue .operators__reserve .operator_name span {color: #0087be;}
+    .chat__chat-queue .operators__busy .operator_name span {color: #f0b849;}
+
+    .chat__chat-queue .operator_name.es span::before, 
+    .chat__chat-queue .operator_name.pt-br::before {
+        content: "";
+        border-radius: 25px;
+        display: block;
+        float: left;
+        width: 19px;
+        height: 19px;
+        margin-right: 3px;
+        margin-top: 2px;
+        background-size: auto 100%;
+        }
+
+    .chat__chat-queue .operator_name.pt-br::before {
+        background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Brazil_-_Circle-512.png');
+        }
+
+    .chat__chat-queue .operator_name.es span::before {
+        background-image: url('https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Spain_-_Circle-512.png');
+        }
+
+    .chat__chat-queue .operator_name.atomic::after {
+        content: "A";
+        background: #c1dbec;
+        border-radius: 25px;
+        text-align: center;
+        line-height: 17px;
+        display: block;
+        float: right;
+        width: 17px;
+        height: 17px;
+        margin-left: 3px;
+        margin-top: 2px;
+        border: solid 1px #666666;
+    }
+
+    .chat__chat-queue .operator_name.concierge span::after {
+        content: "1:1";
+        font-size: 9px;
+        font-weight: normal;
+        color: #ffffff;
+        background: #1b74b0;
+        border-radius: 25px;
+        text-align: center;
+        line-height: 19px;
+        display: block;
+        float: right;
+        width: 19px;
+        height: 19px;
+        margin-left: 3px;
+        margin-top: 2px;
+    }
+  
+    .chat__chat-queue .operator_load {
+        float: right;
+    }
+ 
+    .chat__chat-queue .operator_capacity {
+        width: 50px;
+        height: 8px;
+        background: #849cac;
+        float:right;
+        border-radius: 5px;
+        overflow:hidden;
+        margin: 8px 5px;
+    }
+ 
+    .chat__chat-queue .operator_ind {
+        height: 100%;
+        border-radius: 5px;
+    }
+ 
+    /* --- Load/throttle colors --- */
+    .capLevel0 .operator_ind,
+    .capLevel1 .operator_ind,
+    .capLevel2 .operator_ind,
+    .capLevel3 .operator_ind,
+    .capLevel4 .operator_ind,
+    .capLevel5 .operator_ind {background: #64d9af;}
+    .capLevel6 .operator_ind,
+    .capLevel7 .operator_ind,
+    .capLevel8 .operator_ind,
+    .capLevel9 .operator_ind {background: #f0b849;}
+    .capLevel10 .operator_ind {background: #da6364;}
+    .capLevelOver .operator_ind {background: #c60000;}
+ 
+/* --- Additional stats --- */
+.operators_stats {
+    margin: 10px;
+    font-size: 12px;
+    border: solid 1px #c0c0c0;
+    background: transparent;
+}
+ 
+.operators_stats h4 {
+    padding: 0 0 0 10px;
+    margin: 0;
+    background: transparent;
+    height: 26px;
+    line-height: 26px;
+    cursor: pointer;
+}
+ 
+.operators_all_stats {
+    display:none;
+}
+ 
+.operators_stats.stats_open .operators_all_stats {
+    border-top: solid 1px #c0c0c0;
+}
+ 
+.operators_stats h4 .stats_toggle {
+    float: right;
+    width: 0px;
+    height: 0px;
+    border-top: solid 10px #333333;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    margin: 7px 10px 0 0;
+}
+ 
+.operators_stats.stats_open h4 .stats_toggle {
+    border-top: solid 0 #333333;
+    border-bottom: solid 10px #333333;
+    margin: 7px 10px 0 0;
+}
+ 
+.stats-block {
+    margin: 5px 0;
+    padding: 0 10px;
+}
+ 
+.throttle-count {
+    margin-left: 15px;
+}
+
+/* --- Operator Stats Buttons --- */
+.operators_stats_buttons {
+    margin: 10px;
+    font-size: 12px;
+    background: transparent;
+}
